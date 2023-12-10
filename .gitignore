@@ -1,0 +1,7 @@
+.idea/
+.vs/
+venv/
+.env
+github_data/
+spotify_data/
+personal_data/
