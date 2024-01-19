@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CommandMenu from "$lib/components/CommandMenu.svelte";
 	import { Button } from "$lib/components/ui/button";
-	import { Search } from "lucide-svelte";
+	import { Search, Route } from "lucide-svelte";
 
 	let open = false;
 </script>
@@ -9,10 +9,10 @@
 <nav
 	class="sticky z-20 top-0 flex h-16 items-center justify-center gap-0 bg-background/30 shadow-lg backdrop-blur"
 >
-	<!-- Search Bar -->
 	<div class="flex justify-center items-center w-96 mx-4">
 		<div class="relative flex-grow mx-4 min-w-full">
-			<Search class="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4" />
+			<!-- <Search class="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4" /> -->
+			<Route class="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4" />
 			<Button
 				variant="secondary"
 				on:click={() => (open = true)}
@@ -25,8 +25,25 @@
 
 <CommandMenu
 	bind:open
-	links={[
-		{ url: "#introduction", title: "Introduction" },
+	sections={[
+		{ url: "#motivation", title: "Motivation" },
+		{ url: "#data-collection", title: "Data Collection" },
+		{ url: "#data-processing", title: "Data Processing" },
+		{ url: "#data-analysis", title: "Data Analysis" },
 		{ url: "#conclusion", title: "Conclusion" }
+	]}
+	links={[
+		{
+			url: "https://github.com/akifisitan/rhythms-of-code/blob/main/project.ipynb",
+			title: "Source Code - Notebook"
+		},
+		{
+			url: "https://github.com/akifisitan/rhythms-of-code/tree/main/scripts",
+			title: "Data Collection Scripts"
+		},
+		{
+			url: "https://github.com/akifisitan/rhythms-of-code",
+			title: "GitHub Repository"
+		}
 	]}
 />

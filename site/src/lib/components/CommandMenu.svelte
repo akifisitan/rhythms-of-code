@@ -3,6 +3,7 @@
 	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
 
+	export let sections: { url: string; title: string }[];
 	export let links: { url: string; title: string }[];
 	export let open = false;
 
@@ -20,15 +21,27 @@
 </script>
 
 <Command.Dialog bind:open>
-	<Command.Input placeholder="Navigate to a section..." />
+	<Command.Input placeholder="Navigate..." />
 	<Command.List>
 		<Command.Empty>No results found.</Command.Empty>
 		<Command.Group heading="Sections">
-			{#each links as { url, title }}
+			{#each sections as { url, title }}
 				<Command.Item
 					onSelect={() => {
 						open = false;
 						goto(url);
+					}}
+				>
+					<span>{title}</span>
+				</Command.Item>
+			{/each}
+		</Command.Group>
+		<Command.Group heading="Links">
+			{#each links as { url, title }}
+				<Command.Item
+					onSelect={() => {
+						open = false;
+						window.open(url, "_blank");
 					}}
 				>
 					<span>{title}</span>
