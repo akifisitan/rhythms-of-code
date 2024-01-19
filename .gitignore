@@ -1,7 +1,9 @@
 .idea/
-.vs/
+.vscode/
 venv/
 .env
 github_data/
 spotify_data/
 personal_data/
+data_*.json
+site/
